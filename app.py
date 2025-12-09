@@ -29,8 +29,8 @@ def init_database():
     if count == 0:
         # Insert test users only if table is empty
         test_users = [
-            ('Anna Andersson', 'anna@test.se'),
-            ('Bo Bengtsson', 'bo@test.se')
+            ('Matti Babalosi', 'Matti@test.se'),
+            ('Albin Kurden', 'Albin@test.se')
         ]
 
         cursor.executemany('INSERT INTO users (name, email) VALUES (?, ?)', test_users)
@@ -80,7 +80,7 @@ def anonymize_data():
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
 
-    cursor.execute('UPDATE users SET name = "Anonym Användare"')
+    cursor.execute('UPDATE users SET name = "Anonym Användare" , email = "Anonym@example.se"') 
     conn.commit()
     conn.close()
 
